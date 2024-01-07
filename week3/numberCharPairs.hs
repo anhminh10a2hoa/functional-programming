@@ -1,0 +1,10 @@
+charsDivisibleBy :: Int -> [Char]
+charsDivisibleBy 0 = []
+charsDivisibleBy 1 = ['a'..'z']
+charsDivisibleBy x = [ a | (n, a)<-zip [1..26] ['a'..'z'], n `mod` x == 0 ]
+
+charsProductOf :: [Int] -> [Char]
+charsProductOf [] = []
+charsProductOf [_] = []
+charsProductOf list = [ a | (n, a) <- zip [1..26] ['a'..'z'], x<-products,  n==x ] 
+                    where products = [g*y | (i, g)<-zip [0..] list, (j, y)<-zip [0..] list, j>i && g*y<=26]
